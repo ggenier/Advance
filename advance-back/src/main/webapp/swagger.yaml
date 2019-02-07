@@ -1,0 +1,449 @@
+---
+swagger: "2.0"
+info:
+  description: "Advance project"
+  version: "0.0.1"
+  title: "Advance management"
+  contact:
+    name: "Grégoire GENIER"
+    email: "ggenier@gmail.com"
+host: "8080"
+basePath: "/advance-back/api"
+tags:
+- name: "Employee"
+- name: "TrainingCenter"
+schemes:
+- "http"
+- null
+paths:
+  /employees/countEmployees:
+    get:
+      tags:
+      - "Employee"
+      summary: "Number of employees"
+      description: ""
+      operationId: "countEmployees"
+      produces:
+      - "text/plain"
+      parameters: []
+      responses:
+        200:
+          description: "Number of employees found"
+          schema:
+            type: "integer"
+            format: "int64"
+        204:
+          description: "No employee found"
+  /employees/createEmployee:
+    post:
+      tags:
+      - "Employee"
+      summary: "Create an employee"
+      description: ""
+      operationId: "createEmployee"
+      consumes:
+      - "application/json"
+      parameters: []
+      responses:
+        201:
+          description: "Employee created"
+        415:
+          description: "Format invalid"
+  /employees/deleteEmployeeByHRId/{idEmployee}:
+    delete:
+      tags:
+      - "Employee"
+      summary: "Delete an employee given Human Resources ID"
+      description: ""
+      operationId: "deleteEmployeeByHRId"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idEmployee"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        204:
+          description: "Employee deleted"
+        400:
+          description: "Invalid employee ID"
+        500:
+          description: "Employee not found"
+  /employees/deleteEmployeeByTechnicalId/{id}:
+    delete:
+      tags:
+      - "Employee"
+      summary: "Delete an employee given technical ID"
+      description: ""
+      operationId: "deleteEmployeeByTechnicalId"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        pattern: "\\d+"
+        format: "int64"
+      responses:
+        204:
+          description: "Employee deleted"
+        400:
+          description: "Invalid employee ID"
+        500:
+          description: "Employee not found"
+  /employees/getAllEmployees:
+    get:
+      tags:
+      - "Employee"
+      summary: "Return list of employees"
+      description: ""
+      operationId: "getAllEmployees"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of employees found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Employee"
+        404:
+          description: "List of employees not found"
+  /employees/getEmployeeByHRId/{idEmployee}:
+    get:
+      tags:
+      - "Employee"
+      summary: "Retun an employee given an HR Id"
+      description: ""
+      operationId: "getEmployeeByHRId"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idEmployee"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Employee found"
+          schema:
+            $ref: "#/definitions/Employee"
+        400:
+          description: "Invalid ID"
+        404:
+          description: "Employee not found"
+  /employees/getEmployeeByTechnicalId/{id}:
+    get:
+      tags:
+      - "Employee"
+      summary: "Return employee given by is Technical ID"
+      description: ""
+      operationId: "getEmployeeByTechnicalId"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        pattern: "\\d+"
+        format: "int64"
+      responses:
+        200:
+          description: "Employee found"
+          schema:
+            $ref: "#/definitions/Employee"
+        400:
+          description: "Invalid ID"
+        404:
+          description: "Employee not found"
+  /trainingcenter/countTrainingCenter:
+    get:
+      tags:
+      - "TrainingCenter"
+      summary: "Number of training center"
+      description: ""
+      operationId: "countTrainingCenter"
+      produces:
+      - "text/plain"
+      parameters: []
+      responses:
+        200:
+          description: "Number of training center found"
+          schema:
+            type: "integer"
+            format: "int64"
+        204:
+          description: "No training center found"
+  /trainingcenter/createTrainingCenter:
+    post:
+      tags:
+      - "TrainingCenter"
+      summary: "Create a training center"
+      description: ""
+      operationId: "createTrainingCenter"
+      consumes:
+      - "application/json"
+      parameters: []
+      responses:
+        201:
+          description: "Training center created"
+        415:
+          description: "Format invalid"
+  /trainingcenter/deleteTrainingCenterById/{id}:
+    delete:
+      tags:
+      - "TrainingCenter"
+      summary: "Delete a training center given ID"
+      description: ""
+      operationId: "deleteTrainingCenterById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        pattern: "\\d+"
+        format: "int64"
+      responses:
+        204:
+          description: "Training center deleted"
+        400:
+          description: "Invalid training center ID"
+        500:
+          description: "Training center not found"
+  /trainingcenter/getAllTrainingCenters:
+    get:
+      tags:
+      - "TrainingCenter"
+      summary: "Return list of training center"
+      description: ""
+      operationId: "getAllTrainingCenters"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "List of employees found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/TrainingCenter"
+        204:
+          description: "There is no employees"
+        404:
+          description: "List of employees not found"
+  /trainingcenter/getTrainingCenterById/{id}:
+    get:
+      tags:
+      - "TrainingCenter"
+      summary: "Retun a traning center given an Id"
+      description: ""
+      operationId: "getEmployeeByHRId"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Training center found"
+          schema:
+            $ref: "#/definitions/TrainingCenter"
+        400:
+          description: "Invalid ID"
+        404:
+          description: "Training center not found"
+definitions:
+  Adress:
+    type: "object"
+    required:
+    - "adressType"
+    - "city"
+    - "street"
+    - "zipCode"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      adressType:
+        type: "string"
+        enum:
+        - "PERSO"
+        - "PROF"
+        - "OTHE"
+      flatNumber:
+        type: "string"
+      number:
+        type: "string"
+      street:
+        type: "string"
+      zipCode:
+        type: "string"
+      city:
+        type: "string"
+      digitalCode:
+        type: "string"
+  Employee:
+    type: "object"
+    required:
+    - "birthDate"
+    - "employeeType"
+    - "firstName"
+    - "lastName"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+        description: "Technical ID"
+      lastName:
+        type: "string"
+        description: "Last name of the employee"
+      firstName:
+        type: "string"
+        description: "First name of the employee"
+      identification:
+        $ref: "#/definitions/Identification"
+      idEmployee:
+        type: "string"
+        description: "Human resources ID"
+      birthDate:
+        type: "string"
+        format: "date"
+        description: "Date of birth"
+      employeeType:
+        type: "string"
+        description: "Type of employee"
+        enum:
+        - "VRP"
+        - "ADM"
+        - "OUV"
+      age:
+        type: "integer"
+        format: "int64"
+        description: "Age of the employee"
+      skills:
+        type: "array"
+        description: "List of employee skills"
+        uniqueItems: true
+        items:
+          $ref: "#/definitions/Skill"
+      trainings:
+        type: "array"
+        description: "List of training employee has been follow"
+        uniqueItems: true
+        items:
+          $ref: "#/definitions/Training"
+      phones:
+        type: "array"
+        uniqueItems: true
+        items:
+          $ref: "#/definitions/Phone"
+      adress:
+        type: "array"
+        uniqueItems: true
+        items:
+          $ref: "#/definitions/Adress"
+    description: "Employee resource representation"
+  Identification:
+    type: "object"
+    required:
+    - "adresses"
+    - "phones"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      adresses:
+        type: "array"
+        uniqueItems: true
+        items:
+          $ref: "#/definitions/Adress"
+      phones:
+        type: "array"
+        uniqueItems: true
+        items:
+          $ref: "#/definitions/Phone"
+  Phone:
+    type: "object"
+    required:
+    - "phoneType"
+    properties:
+      phoneType:
+        type: "string"
+        enum:
+        - "PERSO"
+        - "PROF"
+        - "MOBI"
+        - "AUTR"
+      numero:
+        type: "string"
+  Skill:
+    type: "object"
+    required:
+    - "skillType"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      skillType:
+        type: "string"
+        enum:
+        - "TOIT"
+        - "ENDU"
+        - "HUIS"
+      certifie:
+        type: "boolean"
+        default: false
+  Training:
+    type: "object"
+    required:
+    - "certifying"
+    - "gettrainingAdress"
+    - "trainingType"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      trainingType:
+        type: "string"
+        enum:
+        - "TOIT"
+        - "ENDU"
+        - "HUIS"
+      comment:
+        type: "string"
+      certifying:
+        type: "boolean"
+        default: false
+      gettrainingAdress:
+        $ref: "#/definitions/Adress"
+      dateDeDebut:
+        type: "string"
+        format: "date"
+      dateDeFin:
+        type: "string"
+        format: "date"
+      organisme:
+        $ref: "#/definitions/TrainingCenter"
+  TrainingCenter:
+    type: "object"
+    required:
+    - "identification"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      identification:
+        description: "Trainig identification"
+        $ref: "#/definitions/Identification"
+      libelle:
+        type: "string"
+    description: "Training center reperesentation"

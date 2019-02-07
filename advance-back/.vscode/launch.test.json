@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "advance-back",
+                "projectName": "advance-back",
+                "workingDirectory": "f:\\IdeaProjects\\Projets\\Advance\\advance-back",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "advance-back",
+                "projectName": "advance-back",
+                "workingDirectory": "f:\\IdeaProjects\\Projets\\Advance\\advance-back",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

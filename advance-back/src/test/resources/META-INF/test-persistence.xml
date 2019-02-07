@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    <persistence-unit name="AdvancePU" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <jta-data-source>java:/AdvanceDS</jta-data-source>
+
+        <class>com.advancecst.advance.model.Salarie</class>
+        <class>com.advancecst.advance.model.Adresse</class>
+        <class>com.advancecst.advance.model.Telephone</class>
+        <class>com.advancecst.advance.model.Personne</class>
+        <class>com.advancecst.advance.model.Identification</class>
+        <class>com.advancecst.advance.model.Competence</class>
+        <class>com.advancecst.advance.model.Formation</class>
+        <class>com.advancecst.advance.model.OrganismeFormation</class>
+        
+        <properties>
+            
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> 
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/advance" />
+            <property name="hibernate.connection.username" value="ggenier" />
+            <property name="hibernate.connection.password" value="x6cTrdq5@" />
+
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.flushMode" value="FLUSH_AUTO" />
+            <property name="hibernate.hbm2ddl.auto" value="drop-create" />
+            
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+            <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create" />
+
+            <property name="javax.persistence.schema-generation.scripts.create-target" value="advanceCreate.ddl"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="advanceDrop.ddl"/>
+
+        </properties>
+    </persistence-unit>
+
+</persistence>

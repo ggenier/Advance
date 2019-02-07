@@ -1,0 +1,26 @@
+<h2 *ngIf="numberOfEmployees == undefined">Effectif : 0</h2><h2 *ngIf="numberOfEmployees != undefined">Effectif : {{numberOfEmployees}}</h2>
+
+<div *ngIf="numberOfEmployees != undefined" class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Matricule</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Date de naissance</th>
+        <th scope="col">Poste</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Ajouter la construction de l'adresse-->
+      <tr *ngFor="let employee of employees" class='clickable-tr' [routerLink]="['/employee-detail', employee.idEmployee]" routerLinkActive="router-link-active">
+        <th scope="row">{{employee.idEmployee}}</th>
+        <td>{{employee.firstName}}</td>
+        <td>{{employee.lastName}}</td>
+        <td>{{employee.birthDate}}</td>
+        <td>{{employee.employeeType}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

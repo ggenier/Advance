@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "F:\\IdeaProjects\\Projets\\Advance\\advance-front"
+		}
+	],
+	"settings": {
+      "java.configuration.updateBuildConfiguration": "automatic",
+      "files.exclude": {
+         "**/.classpath": true,
+         "**/.project": true,
+         "**/.settings": true,
+         "**/.factorypath": true
+      }
+	}
+}
