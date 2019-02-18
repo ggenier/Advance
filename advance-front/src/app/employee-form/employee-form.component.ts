@@ -20,9 +20,9 @@ export class EmployeeFormComponent implements OnInit {
   }
 
    create() {
-     // this.employee.identification.adress[0].adressType = employeeForm.get('adressType');
+     //this.employee.identification.adress[0].adressType = employeeForm.get('adressType');
      console.log(this.employee);
-     // this.employeeService.createEmployee(this.employee)
-     // .pipe(finalize(() => this.router.navigate(['/employees-list']))).subscribe();
+     this.employeeService.createEmployee(this.employee)
+     .pipe(finalize(() => this.router.navigate(['/employees-list']))).subscribe();
    }
 }
